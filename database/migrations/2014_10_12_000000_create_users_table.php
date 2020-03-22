@@ -21,6 +21,28 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->decimal('price', 10, 2);
+            $table->string('image');
+            $table->string('description');
+            $table->timestamps();
+        });
+        Schema::create('restaurants', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->string('image');
+            $table->timestamps();
+        });
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+        
+        
     }
 
     /**
